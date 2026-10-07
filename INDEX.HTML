@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maratona Tech - Consciência Digital no Brasil</title>
+
+    <style>
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================== */
+
+        :root {
+            --azul-escuro: #06152f;
+            --azul: #0b2a5b;
+            --azul-medio: #123f7a;
+            --azul-claro: #168cff;
+            --ciano: #00c6ff;
+            --branco: #ffffff;
+            --cinza: #d9e4f2;
+            --fundo: #eef5fc;
+            --texto: #172033;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--fundo);
+            color: var(--texto);
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CABEÇALHO
+        ========================== */
+
+        header {
+            position: relative;
+            min-height: 550px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 80px 20px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(3, 18, 45, 0.88),
+                    rgba(4, 35, 76, 0.92)
+                ),
+                url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+
+            background: linear-gradient(
+                90deg,
+                #0066ff,
+                #00c6ff,
+                #0066ff
+            );
+        }
+
+        .autor {
+            font-size: 18px;
+            color: #8fdcff;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        header h1 {
+            font-size: clamp(36px, 6vw, 65px);
+            margin-bottom: 5px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .maratona {
+            color: var(--ciano);
+            font-size: clamp(28px, 4vw, 45px);
+            margin-bottom: 20px;
+        }
+
+        .subtitulo {
+            font-size: 20px;
+            max-width: 850px;
+            color: #dceeff;
+            margin-bottom: 30px;
+        }
+
+        .frase {
+            font-size: 26px;
+            font-weight: bold;
+            max-width: 900px;
+            color: white;
+        }
+
+
+        /* =========================
+           MENU
+        ========================== */
+
+        nav {
+            background: #041126;
+            padding: 15px;
+            text-align: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 18px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--ciano);
+        }
+
+
+        /* =========================
+           CONTEÚDO PRINCIPAL
+        ========================== */
+
+        main {
+            width: min(1150px, 92%);
+            margin: 50px auto;
+        }
+
+        section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 35px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px rgba(6, 21, 47, 0.10);
+        }
+
+        section h2 {
+            color: var(--azul);
+            font-size: 30px;
+            margin-bottom: 20px;
+
+            border-left: 6px solid var(--azul-claro);
+            padding-left: 15px;
+        }
+
+        section p {
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           IMAGEM DE DESTAQUE
+        ========================== */
+
+        .imagem-principal {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+
+            border-radius: 15px;
+            margin-top: 25px;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+        }
+
+
+        /* =========================
+           CARDS
+        ========================== */
+
+        .grid-container {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            overflow: hidden;
+
+            background: #f5f9ff;
+
+            border-radius: 15px;
+
+            border: 1px solid #d7e5f5;
+
+            transition: 0.35s;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 15px 30px rgba(5, 50, 110, 0.20);
+
+            border-color: var(--azul-claro);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .card-conteudo {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--azul);
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 15px;
+            color: #40516b;
+        }
+
+
+        /* =========================
+           LISTA DE CAMINHOS
+        ========================== */
+
+        .lista {
+            display: grid;
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+
+            background: linear-gradient(
+                135deg,
+                #f2f8ff,
+                #e7f3ff
+            );
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            border-left: 5px solid var(--azul-claro);
+        }
+
+        .numero {
+            min-width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                #0757bd,
+                #00aaff
+            );
+
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .item strong {
+            color: var(--azul);
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           ÁREA DE DESTAQUE
+        ========================== */
+
+        .conscientizacao {
+            background:
+                linear-gradient(
+                    135deg,
+                    #06152f,
+                    #0b3975
+                );
+
+            color: white;
+        }
+
+        .conscientizacao h2 {
+            color: white;
+            border-left-color: var(--ciano);
+        }
+
+        .conscientizacao p {
+            color: #e0efff;
+        }
+
+
+        /* =========================
+           BOTÃO
+        ========================== */
+
+        .botao {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 13px 25px;
+
+            background: linear-gradient(
+                135deg,
+                #0877e8,
+                #00b9ff
+            );
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+            box-shadow: 0 5px 15px rgba(0, 140, 255, 0.3);
+        }
+
+        .botao:hover {
+            transform: scale(1.05);
+
+            box-shadow:
+                0 8px 25px rgba(0, 140, 255, 0.5);
+        }
+
+
+        /* =========================
+           RODAPÉ
+        ========================== */
+
+        footer {
+            background: #020b1b;
+            color: #bcd0e8;
+
+            text-align: center;
+
+            padding: 35px 20px;
+
+            border-top: 4px solid var(--azul-claro);
+        }
+
+        footer strong {
+            color: white;
+        }
+
+
+        /* =========================
+           RESPONSIVIDADE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                min-height: 500px;
+                padding: 50px 20px;
+            }
+
+            header h1 {
+                font-size: 38px;
+            }
+
+            .maratona {
+                font-size: 30px;
+            }
+
+            .frase {
+                font-size: 21px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 8px;
+                font-size: 14px;
+            }
+
+            section {
+                padding: 25px;
+            }
+
+            section h2 {
+                font-size: 24px;
+            }
+
+            .imagem-principal {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header>
+
+        <div class="autor">
+            Trabalho desenvolvido por
+        </div>
+
+        <h1>VITORIA NUNES</h1>
+
+        <h2 class="maratona">
+            Maratona Tech
+        </h2>
+
+        <p class="subtitulo">
+            Impactos Macrossociais e Dilemas Digitais no Brasil
+        </p>
+
+        <p class="frase">
+            Reflexões sobre conectividade, desigualdade
+            e a urgência da consciência digital
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         MENU
+    ========================== -->
+
+    <nav>
+
+        <a href="#macrossocial">
+            Transformação
+        </a>
+
+        <a href="#dilemas">
+            Dilemas Digitais
+        </a>
+
+        <a href="#consciencia">
+            Consciência Digital
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         CONTEÚDO
+    ========================== -->
+
+    <main>
+
+
+        <!-- SEÇÃO 1 -->
+
+        <section id="macrossocial">
+
+            <h2>
+                1. O Âmbito Macrossocial e a Transformação no Brasil
+            </h2>
+
+            <p>
+                A expansão tecnológica no Brasil não ocorre de forma
+                neutra ou isolada. Em uma perspectiva
+                <strong>macrossocial</strong>, a digitalização
+                reconfigura as estruturas de trabalho, a educação,
+                as relações políticas e a economia.
+            </p>
+
+            <br>
+
+            <p>
+                No entanto, o avanço tecnológico esbarra em
+                desigualdades históricas estruturais, criando um
+                cenário de exclusão digital que afeta milhões de
+                brasileiros.
+            </p>
+
+
+            <img
+                class="imagem-principal"
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=85"
+                alt="Tecnologia e infraestrutura digital"
+            >
+
+        </section>
+
+
+        <!-- SEÇÃO 2 -->
+
+        <section id="dilemas">
+
+            <h2>
+                2. Principais Dilemas Digitais
+            </h2>
+
+            <p>
+                A transformação digital trouxe grandes oportunidades,
+                mas também criou novos desafios para a sociedade.
+                Entre os principais problemas estão a desinformação,
+                a perda de privacidade e os impactos do excesso de
+                tecnologia na saúde e no comportamento.
+            </p>
+
+
+            <div class="grid-container">
+
+
+                <!-- CARD 1 -->
+
+                <div class="card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=85"
+                        alt="Notícias e desinformação"
+                    >
+
+                    <div class="card-conteudo">
+
+                        <h3>
+                            Desinformação e Fake News
+                        </h3>
+
+                        <p>
+                            A circulação veloz de conteúdos falsos
+                            compromete o debate público, polariza a
+                            sociedade e ameaça os pilares democráticos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 2 -->
+
+                <div class="card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=85"
+                        alt="Privacidade e segurança de dados"
+                    >
+
+                    <div class="card-conteudo">
+
+                        <h3>
+                            Privacidade e Dados
+                        </h3>
+
+                        <p>
+                            A coleta massiva de dados pessoais por
+                            corporações e algoritmos coloca em risco
+                            a privacidade e expõe cidadãos a fraudes
+                            e manipulação de comportamento.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARD 3 -->
+
+                <div class="card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85"
+                        alt="Pessoa utilizando computador"
+                    >
+
+                    <div class="card-conteudo">
+
+                        <h3>
+                            Saúde Mental e Excesso de Telas
+                        </h3>
+
+                        <p>
+                            A hiperconectividade, impulsionada por redes
+                            sociais baseadas em engajamento tóxico,
+                            gera impactos profundos na atenção,
+                            ansiedade e bem-estar, sobretudo entre
+                            os jovens.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- SEÇÃO 3 -->
+
+        <section
+            id="consciencia"
+            class="conscientizacao"
+        >
+
+            <h2>
+                3. Caminhos para a Consciência Digital
+            </h2>
+
+            <p>
+                Para mitigar os impactos negativos e superar os
+                dilemas do ecossistema virtual, o Brasil precisa
+                avançar em frentes estratégicas:
+            </p>
+
+
+            <div class="lista">
+
+
+                <div class="item">
+
+                    <div class="numero">
+                        1
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Letramento Mediático e Digital
+                        </strong>
+
+                        <p>
+                            Ensinar desde a escola básica a analisar
+                            criticamente informações, identificar
+                            fontes confiáveis e navegar com segurança.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="item">
+
+                    <div class="numero">
+                        2
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Políticas Públicas Inclusivas
+                        </strong>
+
+                        <p>
+                            Garantir infraestrutura de qualidade e
+                            acessível para populações marginalizadas,
+                            combatendo a exclusão digital.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="item">
+
+                    <div class="numero">
+                        3
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Regulação Responsável
+                        </strong>
+
+                        <p>
+                            Discutir marcos regulatórios para
+                            plataformas digitais que assegurem
+                            transparência algorítmica e
+                            responsabilização contra crimes virtuais
+                            e discursos de ódio.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <a
+                href="#topo"
+                class="botao"
+            >
+                Voltar ao início ↑
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer>
+
+        <p>
+            <strong>VITORIA NUNES</strong>
+        </p>
+
+        <p>
+            Maratona Tech — Consciência Digital no Brasil
+        </p>
+
+        <p>
+            © 2026 - Painel Temático sobre Consciência Digital no Brasil.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
